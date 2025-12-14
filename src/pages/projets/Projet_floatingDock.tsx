@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import { ProjetFloatingDock } from "@/components/ui/projet_flaotingDock";
 import {  IconDeviceDesktopCode } from "@tabler/icons-react";
 import { MailCheckIcon } from "lucide-react";

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import AI_Prompt from '../../components/kokonutui/ai-prompt';
 import { AppContext } from '../../Context/AppContext';

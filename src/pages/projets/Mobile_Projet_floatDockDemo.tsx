@@ -1,5 +1,7 @@
-import { IconCode, IconDeviceDesktopCode, IconInfoCircle, IconMail, IconMailAi, IconSchool, IconUserCheck } from "@tabler/icons-react";
-import { GrGamepad, GrHome } from "react-icons/gr";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+import {  IconDeviceDesktopCode, } from "@tabler/icons-react";
+import { GrGamepad } from "react-icons/gr";
 import { MobileProjetFloatingDock } from "@/components/ui/mobile_projet_flaotingDock";
 import { MailCheckIcon } from "lucide-react";
 

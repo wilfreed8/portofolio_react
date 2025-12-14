@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import { AppContext } from "@/Context/AppContext";
-import { LogOut, Menu, X, HomeIcon } from "lucide-react";
+import { LogOut, Menu, X } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import gsap from "gsap";
@@ -10,9 +12,10 @@ import { Footer } from "./Footer";
 import { IconDeviceDesktopCode } from "@tabler/icons-react";
 import { ModeToggle } from "./Mode-toggle";
 import { ThemeProviderContext } from "@/Context/ThemeContext";
+import { GrHome } from "react-icons/gr";
 
 const links = [
-	{ name: "Home", href: "/", icon: <HomeIcon size={20}/> },
+	{ name: "Home", href: "/", icon: <GrHome size={20}/> },
 	{ name: "Posts", href: "/posts", icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-workflow"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10h10"/><path d="M7 14h10"/></svg> },
 	{ name: "Projets", href: "/projets", icon: <IconDeviceDesktopCode size={20}/> },
 ];

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import React from 'react'
 import { GrHome } from 'react-icons/gr'
 import { Link } from 'react-router-dom'

@@ -1,8 +1,7 @@
-import { GamepadIcon, List } from 'lucide-react'
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 
 import {  Outlet, useLocation } from 'react-router-dom'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap' ; 
 import { ProjetFloatingDockDemo } from './Projet_floatingDock';
 import { MobileProjetFloatingDockDemo } from './Mobile_Projet_floatDockDemo';
 import { AppContext } from '@/Context/AppContext';

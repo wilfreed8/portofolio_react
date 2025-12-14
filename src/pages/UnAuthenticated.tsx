@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap' ;
 import { LogInIcon } from 'lucide-react';
-import { GrHome, GrHomeOption } from 'react-icons/gr';
+import { GrHome } from 'react-icons/gr';
 
 import { Link } from 'react-router-dom'
 

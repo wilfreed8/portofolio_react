@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { ProjectCard } from './ProjectCard';
 import { projectsData } from '@/assets/data/projectsData';

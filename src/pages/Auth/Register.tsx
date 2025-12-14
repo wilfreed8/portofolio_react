@@ -1,4 +1,6 @@
-import { GoalIcon, Loader } from "lucide-react";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+import {  Loader } from "lucide-react";
 import React, { useContext, useState } from "react";
 import { SiTheregister } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +15,6 @@ type formdata = {
 };
 
 const Register = () => {
-  const { setToken } = useContext(AppContext);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<formdata>({

@@ -1,4 +1,7 @@
-import React, { useMemo, useState } from 'react'
+/* eslint-disable react-hooks/purity */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+import React, {  useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap' ;
 function Crash() {

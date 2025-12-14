@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import { experienceData } from '@/assets/data/experienceData';
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";

@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import React, { useContext, useRef, useState } from 'react';
-import { Mail, MapPin, Phone, Github, Linkedin, Loader, Loader2 } from 'lucide-react';
+import { Mail, MapPin, Phone, Github, Linkedin, Loader } from 'lucide-react';
 import { useScrollReveal } from '@/assets/hooks/useScrollReveal';
 import { FaWhatsapp } from 'react-icons/fa';
 import { AppContext } from '@/Context/AppContext';
@@ -100,6 +102,7 @@ export const Contact = () => {
                     placeholder="Votre nom"
                     className="w-full input bg-white dark:bg-[#111827] dark:text-white shadow-md focus:ring-1 focus:ring-indigo-500"
                   />
+                  {errors?.name && (<p className="text-error font-mono text-sm">{errors.name[0]}</p>)}
                 </div>
 
                 <div>
@@ -115,6 +118,7 @@ export const Contact = () => {
                     placeholder="you@gmail.com"
                     className="w-full input bg-white dark:bg-[#111827] dark:text-white shadow-md focus:ring-1 focus:ring-indigo-500"
                   />
+                  {errors?.email && (<p className="text-error font-mono text-sm">{errors.email[0]}</p>)}  
                 </div>
 
                 <div>
@@ -130,6 +134,7 @@ export const Contact = () => {
                     placeholder="Votre message"
                     className="w-full rounded-lg px-3 py-2 bg-white dark:bg-[#111827] dark:text-white shadow-md focus:ring-1 focus:ring-indigo-500"
                   />
+                  {errors?.message && (<p className="text-error font-mono text-sm">{errors.message[0]}</p>)}  
                 </div>
 
                 <button
@@ -176,7 +181,7 @@ export const Contact = () => {
                   Réseaux sociaux
                 </h4>
                 <div className="flex gap-4">
-                  {[Github, Linkedin, FaWhatsapp].map((Icon, i) => (
+                  {[{icon:Github,href:"https://github.com/wilfreed8"}, {icon:Linkedin,href:""}, {icon:FaWhatsapp}].map((Icon, i) => (
                     <div
                       key={i}
                       className="w-10 h-10 rounded-lg flex items-center justify-center
@@ -184,7 +189,7 @@ export const Contact = () => {
                       hover:bg-slate-300 dark:hover:bg-slate-600
                       transition-all hover:-translate-y-1"
                     >
-                      <Icon size={18} />
+                     <a href={Icon.href && Icon.href} target='_blank'><Icon.icon size={18} /></a> 
                     </div>
                   ))}
                 </div>

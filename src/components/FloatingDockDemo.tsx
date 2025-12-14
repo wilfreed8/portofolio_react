@@ -1,7 +1,6 @@
 import { FloatingDock } from "@/components/ui/floating-dock";
-import { IconCode, IconDeviceDesktopCode, IconInfoCircle, IconMail, IconMailAi, IconSchool, IconUserCheck } from "@tabler/icons-react";
-import { FaEnvelope, FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
-import { GrHome, GrProjects } from "react-icons/gr";
+import { IconCode, IconDeviceDesktopCode, IconMail, IconSchool, IconUserCheck } from "@tabler/icons-react";
+import { GrHome } from "react-icons/gr";
 
 export function FloatingDockDemo() {
   const links = [

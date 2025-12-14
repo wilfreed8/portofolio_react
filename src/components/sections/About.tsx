@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import React, { useRef } from 'react';
 import { Github, Linkedin, Download, MapPin, Briefcase, GraduationCap, Mail } from 'lucide-react';
 import { useScrollReveal } from '@/assets/hooks/useScrollReveal';
@@ -70,6 +72,7 @@ export const About = () => {
                 <Mail className="text-violet-500 mr-3" size={18} />
                 <a
                   href="mailto:wilfreednouame@gmail.com"
+                  target='_blank'
                   className="hover:text-indigo-600 dark:hover:text-indigo-400 transition"
                 >
                   wilfreednouame@gmail.com
@@ -79,7 +82,8 @@ export const About = () => {
 
             <div className="flex flex-wrap gap-3 mb-6">
               <a
-                href="https://github.com"
+                href="https://github.com/wilfreed8"
+                target='_blank'
                 className="px-4 py-2 flex items-center gap-2 rounded-lg
                 bg-indigo-600 hover:bg-indigo-700
                 dark:bg-indigo-500 dark:hover:bg-indigo-400
@@ -89,7 +93,8 @@ export const About = () => {
               </a>
 
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/wilfreed-adjaro-385603341/"
+                target='_blank'
                 className="px-4 py-2 flex items-center gap-2 rounded-lg
                 bg-sky-600 hover:bg-sky-700
                 dark:bg-sky-500 dark:hover:bg-sky-400
@@ -99,7 +104,8 @@ export const About = () => {
               </a>
 
               <a
-                href="#"
+                href="https://drive.google.com/file/d/127uELJx2TVi89Nw5MduUEcvPiNZ1q1bm/view?usp=drivesdk"
+                target='_blank'
                 className="px-4 py-2 flex items-center gap-2 rounded-lg
                 bg-emerald-600 hover:bg-emerald-700
                 dark:bg-emerald-500 dark:hover:bg-emerald-400

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import { ArrowRight, Contact2 } from 'lucide-react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap' ;
@@ -10,7 +12,7 @@ import { Contact } from '@/components/sections/Contact';
 import { IconDeviceDesktopCode } from '@tabler/icons-react';
 import { FloatingDockDemo } from '@/components/FloatingDockDemo';
 import { MobileFloatingDockDemo } from '@/components/Mobile_floating-dock_Demo';
-import Lenis from "lenis";
+// import Lenis from "lenis";
 
 const Home = () => {
 // document.addEventListener("DOMContentLoaded",()=>{

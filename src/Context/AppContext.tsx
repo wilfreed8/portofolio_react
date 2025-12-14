@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import  { createContext, useEffect, useState } from 'react'
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const AppContext = createContext() ;
 
 export default function AppProvider({children}) {

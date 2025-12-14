@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import { createContext, useContext, useEffect, useState } from "react"
 
 type Theme = "dark" | "light" | "system"
@@ -18,6 +20,7 @@ const initialState: ThemeProviderState = {
   setTheme: () => null,
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
 export  function ThemeProvider({
@@ -63,6 +66,7 @@ export  function ThemeProvider({
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext)
 

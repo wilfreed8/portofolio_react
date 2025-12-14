@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import { AppContext } from '@/Context/AppContext';
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';

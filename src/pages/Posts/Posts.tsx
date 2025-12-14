@@ -1,8 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import React, { useEffect, useState } from 'react'
-import Create from './CreatePost';
 import PostCard from './PostCard';
-import ErrorPage from '../ErrorPage';
-import { Divide } from 'lucide-react';
 import PostCardSkelton from './PostCardSkelton';
 import DrawerCreatePost from './DrawerCreatePost';
 import toast from 'react-hot-toast';

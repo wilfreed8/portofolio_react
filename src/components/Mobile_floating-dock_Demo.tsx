@@ -1,4 +1,4 @@
-import { IconCode, IconDeviceDesktopCode, IconInfoCircle, IconMail, IconMailAi, IconSchool, IconUserCheck } from "@tabler/icons-react";
+import { IconCode, IconDeviceDesktopCode, IconMail, IconSchool, IconUserCheck } from "@tabler/icons-react";
 import { GrHome } from "react-icons/gr";
 import { MobileFloatingDock } from "./ui/mobile_floating-dock";
 
@@ -38,7 +38,7 @@ export function MobileFloatingDockDemo() {
   return (
     <div className="flex items-center justify-center  w-full ">
       <MobileFloatingDock
-        mobileClassName="translate-y-20" // only for demo, remove for production
+        className="translate-y-20" // only for demo, remove for production
         items={links}
       />
     </div>

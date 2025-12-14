@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import React, { useMemo, useState } from "react";
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap' ;

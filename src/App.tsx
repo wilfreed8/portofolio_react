@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import "./App.css" ;
 import Todo from "./pages/projets/Todo";

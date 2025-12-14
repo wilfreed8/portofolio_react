@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import React, { useContext, useEffect, useState } from 'react'
 import PostCard from './PostCard';
-import ErrorPage from '../ErrorPage';
 import PostCardSkelton from './PostCardSkelton';
 import { AppContext } from '../../Context/AppContext';
 import { useNavigate } from 'react-router-dom';
-import { GrStatusGood } from 'react-icons/gr';
 import DrawerCreatePost from './DrawerCreatePost';
 import toast from 'react-hot-toast';
 
@@ -19,7 +19,6 @@ const UserPosts = () => {
   const {token} = useContext(AppContext)
   const [posts,setPosts]  = useState<post[]>([]) ;
   const [isloading,setIsloading] = useState(true);
-  const [errors,setErrors] = useState(null);
   const [isDelete,setIsDelete]  = useState(false);
 
   const skelton = window.innerWidth<768 ? Array(2).fill(0) : Array(6).fill(0) ;

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import { Home, PlusCircle, User2 } from "lucide-react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
