@@ -56,7 +56,7 @@ export const MobileFloatingDock = ({
   return (
     <div
       className={cn(
-        "fixed z-10 bottom-4 left-1/2 -translate-x-1/2 w-[92%] px-3 py-3 flex justify-between items-end rounded-2xl  shadow-lg backdrop-blur-sm bg-white/50 dark:bg-neutral-900/70 md:hidden",
+        "fixed z-10 bottom-4 left-1/2  -translate-x-1/2 w-[92%] px-3 py-3 flex justify-between items-end rounded-2xl  shadow-lg backdrop-blur-sm bg-white/50 dark:bg-neutral-900/70 md:hidden",
         className
       )}
     >

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 import { useContext, useEffect, useState } from "react";
@@ -36,8 +37,13 @@ const UpdatePost = () => {
           duration:2000
         });
       },5000);
-      const res = await toast.promise(
-        fetch(`/api/posts/${id}`),
+     const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/posts/${id}`,{
+            headers:{
+            Authorization:`Bearer ${token}`,
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+           }),
         {
           loading: "Chargement du post...",
           success: "Post chargé",
@@ -64,14 +70,15 @@ const UpdatePost = () => {
     e.preventDefault();
     setIsUpdated(true);
 
-    const res = await toast.promise(
-      fetch(`/api/posts/${id}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(formData),
-      }),
+   const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/posts/${id}`,{
+            headers:{
+            Authorization:`Bearer ${token}`,
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+            method:"PUT",
+            body:JSON.stringify(formData)
+           }),
       {
         loading: "Mise à jour du post...",
         error: "Serveur : erreur coté serveur",

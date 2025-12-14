@@ -150,7 +150,7 @@ export default function AI_Prompt({setRequest}) {
 // };
 
     const handleRequest = async () => {
-    const res = await fetch("/api/chats", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chats`, {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${token}`,

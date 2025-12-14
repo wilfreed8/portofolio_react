@@ -4,10 +4,10 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { ProjectCard } from './ProjectCard';
 import { projectsData } from '@/assets/data/projectsData';
 import { useScrollReveal } from '@/assets/hooks/useScrollReveal';
-import { Button } from '../ui/Button';
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { Countup } from '../Countup';
+import { Button } from '../ui/button';
 
 export const Projects = () => {
   const isMobile = window.innerWidth <768

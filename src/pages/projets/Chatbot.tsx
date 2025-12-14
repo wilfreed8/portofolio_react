@@ -26,9 +26,13 @@ const Chatbot = () => {
           duration:2000
         });
       },5000);
-      const fetchPromise = fetch("/api/chats", {
-        headers: { Authorization: `Bearer ${token}` },
-      }).then(async (res) => {
+      const fetchPromise =  fetch(`${import.meta.env.VITE_API_URL}/api/chats`,{
+            headers:{
+            Authorization:`Bearer ${token}`,
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+           }).then(async (res) => {
         const data = await res.json();
         if (!res.ok) throw data.errors || new Error("Erreur serveur");
         return data as Chat[];

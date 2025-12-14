@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 import { useContext, useEffect, useState } from "react";
@@ -35,6 +36,7 @@ const Todo = () => {
   const [filter, setFilter] = useState<Priority | "tous">("tous");
   const [errors, setErrors] = useState<unknown>(null);
   const [isEdit, setIsEdit] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
   const [editedTodo, setEditedTodo] = useState<Todo>({
     id: 0,
     text: "",
@@ -50,9 +52,13 @@ const Todo = () => {
           duration:2000
         });
       },5000);
-      try { const res = await toast.promise(fetch("/api/mytodos", {
-          headers: { Authorization: `Bearer ${token}` },
-        }),{
+      try { const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/mytodos`,{
+            headers:{
+            Authorization:`Bearer ${token}`,
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+           }),{
           loading:"Récupération des todos ...",
           error:"Serveur : erreur cote serverveur"  
         } );
@@ -74,7 +80,7 @@ const Todo = () => {
   const addTodo = async () => {
     if (!formData.text.trim()) return toast.error("Veuillez remplir le champ texte");
 
-    setIsEdit(true);
+    setIsSubmit(true);
     const timeoutId =  setTimeout(() => {
         toast("il semble que vous votre  connexion internet  est lente",{
           icon:"⚠️",
@@ -82,12 +88,15 @@ const Todo = () => {
         });
       },5000);
     try {
-      const res = await toast.promise(
-        fetch("/api/todos", {
-          method: "POST",
-          headers: { Authorization: `Bearer ${token}` },
-          body: JSON.stringify(formData),
-        }),
+      const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/todos`,{
+            headers:{
+            Authorization:`Bearer ${token}`,
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+            method:"POST",  
+            body:JSON.stringify(formData)
+           }),
         { loading: "Ajout en cours...", error: "Serveur :  errreur coté serveur" }
       );
        clearTimeout(timeoutId);
@@ -100,7 +109,7 @@ const Todo = () => {
         toast.success("Todo ajoutée ✅");
       }
     } finally {
-      setIsEdit(false);
+      setIsSubmit(false);
     }
   };
 
@@ -108,6 +117,7 @@ const Todo = () => {
   const oneditTodo = async () => {
     const updatedTodo = { id: editedTodo.id, ...formData };
     setIsEdit(true);
+    setIsSubmit(true);
     const timeoutId =  setTimeout(() => {
         toast("il semble que vous votre  connexion internet  est lente",{
           icon:"⚠️",
@@ -115,12 +125,15 @@ const Todo = () => {
         });
       },5000);
     try {
-      const res = await toast.promise(
-        fetch(`/api/todos/${editedTodo.id}`, {
-          method: "PUT",
-          headers: { Authorization: `Bearer ${token}` },
-          body: JSON.stringify(updatedTodo),
-        }),
+      const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/todos/${editedTodo.id}`,{
+            headers:{
+            Authorization:`Bearer ${token}`,
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+            method:"PUT",  
+            body:JSON.stringify(updatedTodo)
+           }),
         { loading: "Mise à jour en cours...", error: "Serveur : Erreur coté serveur" }
       );
       clearTimeout(timeoutId);
@@ -137,13 +150,13 @@ const Todo = () => {
         toast.success("Todo mise à jour ✅");
       }
     } finally {
-      setIsEdit(false);
-    }
+      setIsSubmit(false);}
   };
 
   // --- Supprimer Todo
   const deleteTodo = async (id: number) => {
     setIsEdit(true);
+    setIsSubmit(true);
     const timeoutId =  setTimeout(() => {
         toast("il semble que vous votre  connexion internet  est lente",{
           icon:"⚠️",
@@ -151,11 +164,14 @@ const Todo = () => {
         });
       },5000);
     try {
-      const res = await toast.promise(
-        fetch(`/api/todos/${id}`, {
-          method: "DELETE",
-          headers: { Authorization: `Bearer ${token}` },
-        }),
+      const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/user/${id}`,{
+            headers:{
+            Authorization:`Bearer ${token}`,
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+            method:"DELETE",
+           }),
         { loading: "Suppression en cours...", error: "Serveur : erreur cote serveur" }
       );
       clearTimeout(timeoutId);
@@ -173,6 +189,7 @@ const Todo = () => {
       }
     } finally {
       setIsEdit(false);
+      setIsSubmit(false);
     }
   };
 
@@ -240,7 +257,8 @@ const Todo = () => {
           </select>
 
           <button
-            className="btn border-none shadow-sm btn-primary shadow-md"
+          disabled={isSubmit}
+            className="btn disabled:bg-gray-500 disabled:text-gray-900 disabled:cursor-not-allowed border-none shadow-sm btn-primary shadow-md"
             onClick={isEdit ? oneditTodo : addTodo}
           >
             {isEdit ? "Edit" : "Ajouter"}

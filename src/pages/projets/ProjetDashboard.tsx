@@ -2,7 +2,7 @@
 // @ts-nocheck
 
 import {  Outlet, useLocation } from 'react-router-dom'
-import { ProjetFloatingDockDemo } from './Projet_floatingDock';
+import { ProjetFloatingDockDemo } from './Projet_floatingDockDemo';
 import { MobileProjetFloatingDockDemo } from './Mobile_Projet_floatDockDemo';
 import { AppContext } from '@/Context/AppContext';
 import { useContext } from 'react';

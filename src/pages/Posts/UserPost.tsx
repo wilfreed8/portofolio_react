@@ -31,11 +31,13 @@ const UserPosts = () => {
           duration:2000
         });
       },5000);
-     const res = await toast.promise(fetch("/api/myposts",{
-      headers:{
-        Authorization:`Bearer ${token}`
-      }
-     }),{
+       const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/myposts`,{
+            headers:{
+            Authorization:`Bearer ${token}`,
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+           }),{
         loading:"Chargement des posts ...",
         error:"Serveur : erreur cote serverveur"
      });
@@ -58,12 +60,14 @@ const UserPosts = () => {
           duration:2000
         });
       },5000);
-        const res = await toast.promise(fetch(`/api/posts/${id}`,{
-          headers:{
-            Authorization:`Bearer ${token}`
-          },
-          method:"DELETE"
-        }),{
+       const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/posts/${id}`,{
+            headers:{
+            Authorization:`Bearer ${token}`,
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+            method:"",
+           }),{
           loading:"Deleting post ...",
           error:"Serveur : erreur coté serveur"
         } );

@@ -47,11 +47,14 @@ const Login = () => {
       },5000);
 
     try {
-      const res = await toast.promise(
-        fetch("/api/login", {
-          method: "POST",
-          body: JSON.stringify(formData),
-        }),
+     const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/login`,{
+            headers:{
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+            method:"POST",
+            body:JSON.stringify(formData)
+           }),
         {
           loading: "Connexion en cours...",
           error: "Erreur serveur lors de la connexion",

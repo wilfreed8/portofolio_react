@@ -24,12 +24,13 @@ const Emails = () => {
           duration:2000
         });
       },5000);
-      const res = await toast.promise(
-        fetch('/api/my_emails', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }),
+      const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/my_emails`,{
+            headers:{
+            Authorization:`Bearer ${token}`,
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+           }),
         {
           loading: 'Chargement des emails...',
           success: 'Emails chargés avec  succès',

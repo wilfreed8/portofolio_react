@@ -24,7 +24,12 @@ const Posts = () => {
         });
       },5000);
      
-     const res = await toast.promise(fetch("/api/posts"),{
+     const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/posts`,{
+            headers:{
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+           }),{
        loading:"Chargement des posts ...",
        error:"Serveur : erreur cote serverveur"
      });

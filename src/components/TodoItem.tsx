@@ -30,8 +30,8 @@ const TodoItem = ({todo , onDelete,isSelected,onToggleSelect,onEdit,isEditing}:P
            </span>
         </div>
         <div className='flex gap-4'>
-    <button className='btn btn-info btn-soft ' onClick={onEdit}><Edit className='w-4 h-4'/></button>
-    <button disabled={isEditing} className='btn btn-error btn-soft ' onClick={onDelete}><Trash className='w-4 h-4'/></button>
+    <button  className='btn btn-info btn-soft ' onClick={onEdit}><Edit className='w-4 h-4'/></button>
+    <button disabled={isEditing} className='btn disbaled:bg-gray-500 disabled:cursor-not-allowed btn-error btn-soft ' onClick={onDelete}><Trash className='w-4 h-4'/></button>
         </div>
     </div>
     </li>

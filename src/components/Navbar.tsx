@@ -51,8 +51,14 @@ const Navbar = () => {
 	}, []);
 
 	const handleLogout = async () => {
-		const res = await toast.promise(
-			fetch("/api/logout", { headers: { Authorization: `Bearer ${token}` }, method: "POST" }),
+		 const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/logout`,{
+            headers:{
+            Authorization:`Bearer ${token}`,
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+			method:"POST",
+           }),
 			{ loading: 'Déconnexion en cours...', success: 'Vous êtes déconnecté !', error: 'Erreur lors de la déconnexion.' }
 		);
 		const data = await res.json();

@@ -38,7 +38,7 @@ export function MobileFloatingDockDemo() {
   return (
     <div className="flex items-center justify-center  w-full ">
       <MobileFloatingDock
-        className="translate-y-20" // only for demo, remove for production
+        className="" // only for demo, remove for production
         items={links}
       />
     </div>

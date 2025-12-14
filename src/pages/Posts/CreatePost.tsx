@@ -42,14 +42,15 @@ const CreatePost = () => {
         });
       },5000);
     try {
-      const res = await toast.promise(
-        fetch("/api/posts", {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        }),
+      const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/posts`,{
+            headers:{
+            Authorization:`Bearer ${token}`,
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+           method:"POST",
+           body:JSON.stringify(formData)
+           }),
         {
           loading: "Création du post...",
           error: "Erreur serveur lors de la création",

@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
-import React, { useContext, useRef, useState } from 'react';
+import React, {  useRef, useState } from 'react';
 import { Mail, MapPin, Phone, Github, Linkedin, Loader } from 'lucide-react';
 import { useScrollReveal } from '@/assets/hooks/useScrollReveal';
 import { FaWhatsapp } from 'react-icons/fa';
-import { AppContext } from '@/Context/AppContext';
 import toast from 'react-hot-toast';
 
 export const Contact = () => {
-  const { token } = useContext(AppContext);
   const { ref, isRevealed } = useScrollReveal();
 
   const [formData, setFormData] = useState({
@@ -32,14 +30,14 @@ export const Contact = () => {
   const handleContact = async (e) => {
     e.preventDefault();
     setIsSending(true);
-
-    const request = fetch("/api/my_emails", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify(formData),
-      method: "POST"
-    }).then(async (res) => {
+     const request =  fetch(`${import.meta.env.VITE_API_URL}/api/my_emails`,{
+            headers:{
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+            method:"POST",  
+            body:JSON.stringify(formData)
+           }).then(async (res) => {
       const data = await res.json();
 
       if (!res.ok) {

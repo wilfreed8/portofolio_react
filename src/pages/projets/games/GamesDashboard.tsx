@@ -12,7 +12,7 @@ const GamesDashboard = () => {
       current = "currency"
   }else current = "crash" ;
   return (
-    <div className=' mt-5 shadow-md flex-col flex h-screen justify-between  gap-5'>
+    <div className='overflow-hidden mt-5 shadow-md flex-col flex h-screen justify-between  gap-5'>
       <div className='fixed  flex w-full justify-center top-25 z-10'>
         <ul className='p-4 flex gap-6'>
           <Link to="/projets/games/crash"><button className={`btn border-none  shadow-md hover:shadow-md  hover:shadow-blue-600 hover:translate-y-2 ${current=="crash" ? "bg-orange-500 text-white hover:shadow-orange-500/50" : "hover:bg-white"} `}>Crash </button></Link>

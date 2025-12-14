@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 import {  Loader } from "lucide-react";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { SiTheregister } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "../../Context/AppContext";
 import toast from "react-hot-toast";
 
 type formdata = {
@@ -47,11 +47,15 @@ const Register = () => {
         });
       },5000);
     try {
-      const res = await toast.promise(
-        fetch("/api/register", {
-          method: "POST",
-          body: JSON.stringify(formData),
-        }),
+     const res = await toast.promise(fetch(`${import.meta.env.VITE_API_URL}/api/register`,{
+            headers:{
+  
+             Accept: 'application/json',
+            "Content-type": 'application/json'
+            },
+            method:"POST",  
+            body:JSON.stringify(formData)
+           }),
         {
           loading: "Création du compte...",
           error: "Serveur : erreur cote serveur",

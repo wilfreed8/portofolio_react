@@ -34,7 +34,6 @@ import Emails from "./pages/projets/Emails/Emails";
 
 gsap.registerPlugin(useGSAP,ScrollTrigger,SplitText);
 const App = () => {
-  console.log("API URL:", import.meta.env);
   const {user} = useContext(AppContext);
   const isMe = user?.email=="hackman@gmail.com"
   return (
