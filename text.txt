@@ -1,0 +1,19 @@
+disabled:bg-gray-500 disbaled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none
+
+animation au scroll svg
+ const path = document.getElementById("stroke-path");
+  const pathLength = path.getTotalLength();
+  path.style.strokeDasharray = pathLength ;
+  path.style.strokeDashoffset = pathLength ;
+  
+  gsap.to(path,{
+    strokeDashoffset:0,
+    ease:"none",
+     scrollTrigger:{
+      trigger:".main",
+      start:"top 80%" ,
+      end:"bottom bottom",
+      scrub:true,
+      markers:true,
+     }
+  });
