@@ -10,7 +10,6 @@ type formdata = {
   email: string;
   password: string;
   password_confirmation: string;
-  select: boolean;
 };
 
 const Register = () => {
@@ -22,18 +21,17 @@ const Register = () => {
     email: "",
     password: "",
     password_confirmation: "",
-    select: false,
   });
 
   const [errors, setErrors] = useState<any>({});
   const [isRegister, setIsRegister] = useState(false);
-
+  const [selected, setSelected] = useState(false);
   const handleForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     if (name === "select") {
-      setFormData((prev) => ({ ...prev, select: !prev.select }));
-    } else {
+      setSelected(!selected);
+      } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
@@ -41,7 +39,12 @@ const Register = () => {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsRegister(true);
-
+  const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
     try {
       const res = await toast.promise(
         fetch("/api/register", {
@@ -50,10 +53,10 @@ const Register = () => {
         }),
         {
           loading: "Création du compte...",
-          error: "Erreur serveur lors de l’inscription",
+          error: "Serveur : erreur cote serveur",
         }
       );
-
+      clearTimeout(timeoutId);
       const data = await res.json();
 
       if (!res.ok || data.errors) {
@@ -121,7 +124,7 @@ const Register = () => {
               <span className="font-semibold pt-2 flex items-center gap-2">
                 <input
                   type="checkbox"
-                  checked={formData.select}
+                  checked={selected}
                   name="select"
                   onChange={handleForm}
                 />

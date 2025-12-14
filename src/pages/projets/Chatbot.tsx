@@ -18,6 +18,12 @@ const Chatbot = () => {
 
   useEffect(() => {
     const fetchChats = async () => {
+      const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
       const fetchPromise = fetch("/api/chats", {
         headers: { Authorization: `Bearer ${token}` },
       }).then(async (res) => {
@@ -36,7 +42,8 @@ const Chatbot = () => {
           setLoading(false);
         })
         .catch(() => setChats([]));
-    };
+      clearTimeout(timeoutId);
+    }; 
 
     fetchChats();
   }, [token, request]);

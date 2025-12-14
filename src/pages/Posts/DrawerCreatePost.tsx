@@ -73,7 +73,12 @@ export default function DrawerCreatePost() {
   const CreatePost = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsCreated(true);
-
+  const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
     try {
       const res = await toast.promise(
         fetch("/api/posts", {
@@ -88,7 +93,7 @@ export default function DrawerCreatePost() {
           error: "Serveur : erreur côté serveur",
         }
       );
-
+      clearTimeout(timeoutId);
       const data = await res.json();
 
       if (!res.ok || data.errors) {

@@ -37,6 +37,12 @@ const Login = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLogin(true);
+    const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
 
     try {
       const res = await toast.promise(
@@ -49,7 +55,7 @@ const Login = () => {
           error: "Erreur serveur lors de la connexion",
         }
       );
-
+      clearTimeout(timeoutId);
       const data = await res.json();
 
       if (!res.ok || data.errors) {

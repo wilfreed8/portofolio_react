@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AppContext } from "../../Context/AppContext";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Loader } from "lucide-react";
 
 type post = {
   title: string;
@@ -32,7 +33,12 @@ const CreatePost = () => {
   const CreatePost = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsCreated(true);
-
+ const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
     try {
       const res = await toast.promise(
         fetch("/api/posts", {
@@ -47,7 +53,7 @@ const CreatePost = () => {
           error: "Erreur serveur lors de la création",
         }
       );
-
+      clearTimeout(timeoutId);
       const data = await res.json();
 
       if (!res.ok || data.errors) {
@@ -107,16 +113,18 @@ const CreatePost = () => {
               {errors.body[0]}
             </p>
           )}
-
+          <div className="flex mt-1 justify-center relative items-center hover:translate-y-1 transition-all gap-2">
+             <Loader className={isCreated ? "flex text-white z-10 animate-spin absolute left-1/3" : "hidden"}/>
           <input
             type="submit"
             value="Create post"
             disabled={isCreated}
             className="w-full mt-2 py-2 rounded-md font-bold text-white shadow-lg transition-all 
                        bg-primary dark:bg-indigo-600 
-                       hover:-translate-y-1 
+                       hover:translate-y-1 
                        disabled:bg-gray-500 disabled:cursor-not-allowed disabled:shadow-none"
           />
+             </div>
         </div>
       </form>
     </div>

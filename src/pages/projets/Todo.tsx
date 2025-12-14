@@ -42,12 +42,19 @@ const Todo = () => {
   //recuperer les todos
   useEffect(() => {
     const getTodos = async () => {
+      const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
       try { const res = await toast.promise(fetch("/api/mytodos", {
           headers: { Authorization: `Bearer ${token}` },
         }),{
           loading:"Récupération des todos ...",
           error:"Serveur : erreur cote serverveur"  
         } );
+        clearTimeout(timeoutId);
         const data = await res.json();
         if (res.ok && !data.errors) {
           setTodos(data);
@@ -65,6 +72,12 @@ const Todo = () => {
     if (!formData.text.trim()) return toast.error("Veuillez remplir le champ texte");
 
     setIsEdit(true);
+    const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
     try {
       const res = await toast.promise(
         fetch("/api/todos", {
@@ -74,7 +87,7 @@ const Todo = () => {
         }),
         { loading: "Ajout en cours...", error: "Serveur :  errreur coté serveur" }
       );
-
+       clearTimeout(timeoutId);
       const data = await res.json();
       if (!res.ok || data.errors) {
         toast.error("Erreur de validation du formulaire");
@@ -92,6 +105,12 @@ const Todo = () => {
   const oneditTodo = async () => {
     const updatedTodo = { id: editedTodo.id, ...formData };
     setIsEdit(true);
+    const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
     try {
       const res = await toast.promise(
         fetch(`/api/todos/${editedTodo.id}`, {
@@ -101,7 +120,7 @@ const Todo = () => {
         }),
         { loading: "Mise à jour en cours...", error: "Serveur : Erreur coté serveur" }
       );
-
+      clearTimeout(timeoutId);
       const data = await res.json();
       if (!res.ok || data.errors) {
         toast.error("Erreur de validation du formulaire");
@@ -122,6 +141,12 @@ const Todo = () => {
   // --- Supprimer Todo
   const deleteTodo = async (id: number) => {
     setIsEdit(true);
+    const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
     try {
       const res = await toast.promise(
         fetch(`/api/todos/${id}`, {
@@ -130,7 +155,7 @@ const Todo = () => {
         }),
         { loading: "Suppression en cours...", error: "Serveur : erreur cote serveur" }
       );
-
+      clearTimeout(timeoutId);
       const data = await res.json();
       if (!res.ok || data.errors) {
         toast.error("Erreur lors de la suppression");

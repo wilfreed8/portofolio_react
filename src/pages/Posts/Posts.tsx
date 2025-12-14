@@ -17,10 +17,19 @@ const Posts = () => {
   const skelton = window.innerWidth<768 ? Array(2).fill(0) : Array(6).fill(0) ;
   useEffect(()=>{
     const getpost = async () => {
+
+      const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
+     
      const res = await toast.promise(fetch("/api/posts"),{
        loading:"Chargement des posts ...",
        error:"Serveur : erreur cote serverveur"
      });
+     clearTimeout(timeoutId);
     const data = await res.json();
     if(!res.ok){
       setIsloading(false);

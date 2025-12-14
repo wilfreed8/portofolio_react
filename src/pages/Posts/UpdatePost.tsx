@@ -28,6 +28,12 @@ const UpdatePost = () => {
   /* ---------- GET POST ---------- */
   useEffect(() => {
     const getPost = async () => {
+      const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
       const res = await toast.promise(
         fetch(`/api/posts/${id}`),
         {
@@ -36,6 +42,7 @@ const UpdatePost = () => {
           error: "Serveur : erreur coté serveur",
         }
       );
+      clearTimeout(timeoutId);
 
       const data = await res.json();
 

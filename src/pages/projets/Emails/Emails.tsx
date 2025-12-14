@@ -16,6 +16,12 @@ const Emails = () => {
 
   useEffect(() => {
     const fetchEmails = async () => {
+      const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
       const res = await toast.promise(
         fetch('/api/my_emails', {
         headers: {
@@ -28,6 +34,7 @@ const Emails = () => {
           error: 'Erreur lors du chargement des emails',
         }
       );
+      clearTimeout(timeoutId);
          const data = await res.json();
         if (!res.ok) throw data.errors || new Error('Erreur serveur');
         else {

@@ -26,6 +26,12 @@ const UserPosts = () => {
 
   useEffect(()=>{
     const getmypost = async () => {
+      const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
      const res = await toast.promise(fetch("/api/myposts",{
       headers:{
         Authorization:`Bearer ${token}`
@@ -34,6 +40,7 @@ const UserPosts = () => {
         loading:"Chargement des posts ...",
         error:"Serveur : erreur cote serverveur"
      });
+      clearTimeout(timeoutId);
     const data = await res.json();
     if(!res.ok){
       setIsloading(false);
@@ -46,15 +53,24 @@ const UserPosts = () => {
   },[token]);
 
   const handleDelete = async (id:number) => {
-        const res = await fetch(`/api/posts/${id}`,{
+    const timeoutId =  setTimeout(() => {
+        toast("il semble que vous votre  connexion internet  est lente",{
+          icon:"⚠️",
+          duration:2000
+        });
+      },5000);
+        const res = await toast.promise(fetch(`/api/posts/${id}`,{
           headers:{
             Authorization:`Bearer ${token}`
           },
           method:"DELETE"
-        });
+        }),{
+          loading:"Deleting post ...",
+          error:"Serveur : erreur coté serveur"
+        } );
+        clearTimeout(timeoutId);
         const data = res.json();
         if(!res.ok){
-          toast.error(" Serveur : erreur coté serveur")
           setErrors(data.errors);
         }else{
            setIsDelete(true);
